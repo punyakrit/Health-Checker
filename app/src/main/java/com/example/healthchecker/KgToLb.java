@@ -45,6 +45,8 @@ public class KgToLb extends AppCompatActivity {
                 Snackbar snackbar = Snackbar.make(view, "Weight in KG = " + kilograms + "kg and in Lbs = "+ pounds +"lbs", Snackbar.LENGTH_LONG);
                 snackbar.show();
 
+                Toast.makeText(KgToLb.this, pounds+" Lbs", Toast.LENGTH_LONG).show();
+
             }
         });
     }
