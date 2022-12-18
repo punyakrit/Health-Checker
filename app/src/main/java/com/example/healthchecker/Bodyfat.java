@@ -8,10 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class Bodyfat extends AppCompatActivity {
 
-    private double bmi1;
-    private double age2;
+    private double height;
+    private double neck;
+    private double abdomen;
     private double bodyFat;
 
     @Override
@@ -25,8 +28,9 @@ public class Bodyfat extends AppCompatActivity {
         }
 
 
-        EditText bmi = findViewById(R.id.bmi);
-        EditText age = findViewById(R.id.age);
+        EditText hei = findViewById(R.id.height);
+        EditText ne = findViewById(R.id.neck);
+        EditText abd = findViewById(R.id.abdomen);
         TextView resultView = findViewById(R.id.result);
 
         Button calculateButton = findViewById(R.id.button);
@@ -35,17 +39,24 @@ public class Bodyfat extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Get the user's input
-                bmi1 = Double.parseDouble(bmi.getText().toString());
-                age2 = Double.parseDouble(age.getText().toString());
-
+                height = Double.parseDouble(hei.getText().toString());
+                neck = Double.parseDouble(ne.getText().toString());
+                abdomen = Double.parseDouble(abd.getText().toString());
                 // Perform the body fat calculation
-                bodyFat =(1.20 * bmi1) + (0.23 *age2) - 5.4;
+                bodyFat =86.010 * Math.log10(abdomen - neck) - 70.041 * Math.log10(height) + 36.76;
 
                 // Display the result
+
+
                 resultView.setText(bodyFat+"%");
+
+                Snackbar snackbar = Snackbar.make(view, "Your body fat is  " + bodyFat+"%", Snackbar.LENGTH_LONG);
+                snackbar.show();
             }
         });
 
 
     }
 }
+
+//86.010 x log10 (abdomen – neck) – 70.041 x log10 (height) + 36.76

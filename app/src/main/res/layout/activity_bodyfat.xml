@@ -23,15 +23,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BMI Value:"
+            android:text="Height Value (cm):"
             android:textSize="16dp"/>
 
         <EditText
-            android:id="@+id/bmi"
+            android:id="@+id/height"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:hint="Enter BMI Value"/>
+            android:hint="Enter Height Value in cm"/>
     </LinearLayout>
 
 
@@ -47,15 +47,38 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Age:"
+            android:text="Neck Value (cm):"
             android:textSize="16dp"/>
 
         <EditText
-            android:id="@+id/age"
+            android:id="@+id/neck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:hint="Enter Age"/>
+            android:hint="Enter Neck Value in cm"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:padding="10dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Abdomen Value (cm):"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:id="@+id/abdomen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Enter Abdomen Value in cm"/>
 
     </LinearLayout>
 
