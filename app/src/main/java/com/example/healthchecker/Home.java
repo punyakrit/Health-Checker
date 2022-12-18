@@ -20,6 +20,7 @@ public class Home extends AppCompatActivity {
 
         Button btn = findViewById(R.id.kg);
         Button btn2 = findViewById(R.id.bmi);
+        Button btn3 = findViewById(R.id.fat);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +35,14 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), BmiCalculator.class);
+                startActivity(i);
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Bodyfat.class);
                 startActivity(i);
             }
         });
