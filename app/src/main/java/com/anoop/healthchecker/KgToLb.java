@@ -3,6 +3,7 @@ package com.anoop.healthchecker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +34,7 @@ public class KgToLb extends AppCompatActivity {
         EditText kg = findViewById(R.id.input);
         Button b1 = findViewById(R.id.button);
         TextView textview= findViewById(R.id.output);
+        TextView lb = findViewById(R.id.lbs);
 
 
 
@@ -44,16 +46,25 @@ public class KgToLb extends AppCompatActivity {
             public void onClick(View view) {
                 String kilograms = kg.getText().toString();
 
-                float kilo = Float.parseFloat(kilograms);
 
-                float pounds = (float) (kilo * 2.20462);
+                if (TextUtils.isEmpty(kilograms)){
+                    textview.setText("");
+                    lb.setText("");
 
-                textview.setText(""+pounds);
+                    Snackbar snackbar = Snackbar.make(view, "Enter the Value", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                } else {
 
-                Snackbar snackbar = Snackbar.make(view, "Weight in KG = " + kilograms + "kg and in Lbs = "+ pounds +"lbs", Snackbar.LENGTH_LONG);
-                snackbar.show();
+                    float kilo = Float.parseFloat(kilograms);
+                    lb.setText("lbs");
+                    float pounds = (float) (kilo * 2.20462);
 
-                Toast.makeText(KgToLb.this, pounds+" Lbs", Toast.LENGTH_LONG).show();
+
+                    textview.setText("" + pounds);
+
+                    Snackbar snackbar = Snackbar.make(view, "Weight in KG = " + kilograms + "kg and in Lbs = " + pounds + "lbs", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
 
             }
         });
