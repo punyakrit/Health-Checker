@@ -3,6 +3,7 @@ package com.anoop.healthchecker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,10 +47,28 @@ public class Bodyfat extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Get the user's input
-                height = Double.parseDouble(hei.getText().toString());
-                neck = Double.parseDouble(ne.getText().toString());
-                abdomen = Double.parseDouble(abd.getText().toString());
-                // Perform the body fat calculation
+
+                String heightStr = hei.getText().toString();
+                String neckStr = ne.getText().toString();
+                String abdStr = abd.getText().toString();
+
+
+
+
+                if (TextUtils.isEmpty(heightStr) && TextUtils.isEmpty(neckStr) && TextUtils.isEmpty(abdStr) ){
+                    Snackbar snackbar = Snackbar.make(view, "Enter correct values", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                    resultView.setText("");
+
+                }else{
+
+                    height = Double.parseDouble(heightStr);
+                    neck = Double.parseDouble(neckStr);
+                    abdomen = Double.parseDouble(abdStr);
+
+
+                    // Perform the body fat calculation
+
                 bodyFat =86.010 * Math.log10(abdomen - neck) - 70.041 * Math.log10(height) + 36.76;
 
                 // Display the result
@@ -59,6 +78,7 @@ public class Bodyfat extends AppCompatActivity {
 
                 Snackbar snackbar = Snackbar.make(view, "Your body fat is  " + bodyFat+"%", Snackbar.LENGTH_LONG);
                 snackbar.show();
+            }
             }
         });
 
